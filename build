@@ -19,7 +19,7 @@ test_k = proj.tangle('test.md')
 wasm_k = proj.tangle('wasm.md')
 data_k = proj.tangle('data.md')
 
-wasm_java = proj.definition( alias     = 'wasm-' + 'java' 
+wasm_java = proj.definition( alias     = 'wasm-java'
                            , backend   = 'java'
                            , main      = test_k
                            , other     = [ wasm_k, data_k ]
@@ -27,7 +27,7 @@ wasm_java = proj.definition( alias     = 'wasm-' + 'java'
                            , flags     = '--main-module WASM-TEST --syntax-module WASM-TEST ' \
                            )
 
-wasm_ocaml = proj.definition( alias     = 'wasm-' + 'ocaml' 
+wasm_ocaml = proj.definition( alias     = 'wasm-ocaml'
                             , backend   = 'ocaml'
                             , main      = test_k
                             , other     = [ wasm_k, data_k ]
@@ -36,7 +36,7 @@ wasm_ocaml = proj.definition( alias     = 'wasm-' + 'ocaml'
                                         + '-O3 --non-strict'
                             )
 
-wasm_haskell = proj.definition( alias     = 'wasm-haskell' 
+wasm_haskell = proj.definition( alias     = 'wasm-haskell'
                               , backend   = 'haskell'
                               , main      = test_k
                               , other     = [ wasm_k, data_k ]
