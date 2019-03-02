@@ -17,7 +17,7 @@ pipeline {
       steps {
         ansiColor('xterm') {
           sh '''
-            ./build wasm-ocaml wasm-java
+            ./build wasm-java
           '''
         }
       }
