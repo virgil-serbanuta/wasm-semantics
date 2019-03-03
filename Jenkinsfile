@@ -13,7 +13,8 @@ pipeline {
         }
       }
     }
-    stage('Build') {
+
+    stage('Build Java') {
       steps {
         ansiColor('xterm') {
           sh '''
@@ -22,35 +23,46 @@ pipeline {
         }
       }
     }
-    stage('Java Backend') {
+    stage('Build OCaml') {
       steps {
         ansiColor('xterm') {
           sh '''
-            nprocs=$(nproc)
-            [ "$nprocs" -gt '4' ] && nprocs=4
-            ./build test-exec -j"$nprocs"
+            ./build wasm-ocaml
           '''
         }
       }
     }
-    stage('Test Proofs') {
+
+    stage('Exec OCaml') {
       steps {
         ansiColor('xterm') {
           sh '''
             nprocs=$(nproc)
             [ "$nprocs" -gt '4' ] && nprocs=4
-            ./build test-proofs -j"$nprocs"
+            ./build test-exec-ocaml -j"$nprocs"
           '''
         }
       }
     }
-    stage('OCaml Backend') {
+    stage('Exec Java') {
       steps {
         ansiColor('xterm') {
           sh '''
             nprocs=$(nproc)
             [ "$nprocs" -gt '4' ] && nprocs=4
-            false # TODO: FIXME
+            ./build test-exec-java -j"$nprocs"
+          '''
+        }
+      }
+    }
+
+    stage('Proofs Java') {
+      steps {
+        ansiColor('xterm') {
+          sh '''
+            nprocs=$(nproc)
+            [ "$nprocs" -gt '4' ] && nprocs=4
+            ./build test-proofs-java -j"$nprocs"
           '''
         }
       }
