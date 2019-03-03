@@ -23,7 +23,7 @@ def build_wasm(backend, flags = ''):
     return proj.definition( alias     = 'wasm-' + backend
                           , backend   = backend
                           , main      = 'test.md'
-                          , other     = [ 'wasm.md', 'data.md' ]
+                          , other     = [ 'wasm.md', 'data.md', 'kwasm-lemmas.md' ]
                           , directory = proj.builddir('defn', backend)
                           , flags     = '--main-module WASM-TEST --syntax-module WASM-TEST ' \
                                       + flags
