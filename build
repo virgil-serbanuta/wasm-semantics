@@ -35,7 +35,7 @@ wasm_haskell = build_wasm(backend = 'haskell')
 # Testing
 # =======
 
-concrete_backend = wasm_java
+concrete_backend = wasm_ocaml
 symbolic_backend = wasm_java
 
 t_simple = concrete_backend.tests( glob = 'tests/simple/*.wast'
