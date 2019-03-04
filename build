@@ -53,6 +53,7 @@ def proof_tests(defn, backend):
     return defn.proofs( glob = 'tests/proofs/*-spec.k'
                       , alias = 'test-proofs-' + backend
                       , default = False
+                      , flags = '-m KWASM-LEMMAS'
                       )
 
 exec_tests(wasm_java, 'java')
